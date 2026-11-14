@@ -1,0 +1,12 @@
+model:
+  name: "axon_density_unet"
+  variant: "v0_baseline"  # v0_baseline, residual, attention
+  in_channels: 1
+  base_channels: 32
+  channel_progression: [32, 64, 128, 256]
+  bottleneck_channels: 512
+  head_activation: "relu"
+  density_scale: 1000.0
+  input_shape: [1, 224, 224]
+  core_shape: [1, 192, 192]
+  pad_width: 16
