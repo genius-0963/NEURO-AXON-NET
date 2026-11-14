@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeuroAxonNet — Research Review Platform</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <!-- Mandatory Research-Use Disclaimer Banner -->
+  <header class="disclaimer-banner">
+    ⚠️ <strong>RESEARCH PROTOTYPE ONLY</strong> — NOT A CLINICAL DIAGNOSTIC DEVICE OR A SUBSTITUTE FOR EXPERT PATHOLOGY REVIEW.
+  </header>
+
+  <main class="container">
+    <div class="header-section">
+      <h1>NeuroAxonNet Research Platform</h1>
+      <p class="subtitle">Deep Learning Optic Nerve Axon Count-Density Estimation & QC Triage Engine</p>
+    </div>
+
+    <div class="grid-layout">
+      <!-- Left Column: Acquisition Metadata & Ingestion -->
+      <section class="card control-card">
+        <h2>1. Micrograph Acquisition</h2>
+        <form id="uploadForm">
+          <div class="form-group">
+            <label for="imageFile">Microscopy Image (PNG, TIFF, JPG):</label>
+            <input type="file" id="imageFile" accept=".png,.tif,.tiff,.jpg,.jpeg" required>
+          </div>
+
+          <div class="metadata-grid">
+            <div class="form-group">
+              <label for="species">Species:</label>
+              <select id="species">
+                <option value="rat" selected>Rattus norvegicus (Rat)</option>
+                <option value="mouse">Mus musculus (Mouse - OOD)</option>
+                <option value="nhp">Non-Human Primate (NHP - OOD)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="stain">Histological Stain:</label>
+              <select id="stain">
+                <option value="PPD" selected>1% p-phenylenediamine (PPD)</option>
+                <option value="toluidine_blue">Toluidine Blue</option>
+                <option value="other">Other Histochemical</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="pixelSize">Pixel Spacing (µm/px):</label>
+              <input type="number" id="pixelSize" step="0.0001" value="0.0625">
+            </div>
+
+            <div class="form-group">
+              <label for="microscope">Microscope / Objective:</label>
+              <input type="text" id="microscope" value="100x_oil_brightfield">
+            </div>
+          </div>
+
+          <button type="submit" id="analyzeBtn" class="btn primary-btn">Run Analysis & QC Audit</button>
+        </form>
+
+        <div class="quick-samples">
+          <h3>Load Verified Fixtures:</h3>
+          <button class="btn secondary-btn" onclick="loadSample('rat_01_patch_00')">Normal Patch (Rat 01)</button>
+          <button class="btn secondary-btn warning-btn" onclick="loadSample('defect_blurry')">Defocus Blur (QC Abstain)</button>
+          <button class="btn secondary-btn danger-btn" onclick="loadSample('defect_blank')">Slide Void (QC Abstain)</button>
+        </div>
+      </section>
+
+      <!-- Right Column: Interactive Canvas & Review -->
+      <section class="card viewer-card">
+        <div class="viewer-header">
+          <h2>2. Micrograph & Density Overlay</h2>
+          <div class="view-toggles">
+            <label><input type="radio" name="viewMode" value="blended" checked> Density Overlay</label>
+            <label><input type="radio" name="viewMode" value="original"> Original</label>
+            <label><input type="radio" name="viewMode" value="density"> Pure Density</label>
+            <span class="alpha-slider-wrap">
+              <label for="alphaSlider">Opacity:</label>
+              <input type="range" id="alphaSlider" min="0" max="1" step="0.05" value="0.5">
+            </span>
+          </div>
+        </div>
+
+        <div class="canvas-wrapper">
+          <canvas id="viewCanvas" width="400" height="400"></canvas>
+          <div id="loader" class="loader-overlay hidden">
+            <div class="spinner"></div>
+            <p>Evaluating Density & QC Metrics...</p>
+          </div>
+        </div>
+
+        <div class="review-actions">
+          <span>Human Review Adjudication:</span>
+          <button class="btn review-btn accept" onclick="setAdjudication('ACCEPTED')">✓ Accept Result</button>
+          <button class="btn review-btn recount" onclick="setAdjudication('RECOUNT_REQUIRED')">? Expert Recount</button>
+          <button class="btn review-btn reject" onclick="setAdjudication('REJECTED')">✕ Reject (Artifact)</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- Results Section -->
+    <section id="resultsSection" class="card results-card hidden">
+      <h2>3. Quantitative Analysis & Quality Gate Report</h2>
+      
+      <div class="stats-grid">
+        <div class="stat-box primary-box">
+          <span class="stat-label">Estimated Axon Count</span>
+          <span id="statCount" class="stat-value">--</span>
+          <span class="stat-unit">normal_appearing_axons</span>
+        </div>
+
+        <div class="stat-box">
+          <span class="stat-label">Quality Control Status</span>
+          <span id="statQCStatus" class="stat-badge pass">PASS</span>
+          <span id="statQCFlags" class="stat-sub">Zero Flags</span>
+        </div>
+
+        <div class="stat-box">
+          <span class="stat-label">Laplacian Focus Score</span>
+          <span id="statFocus" class="stat-value">--</span>
+          <span class="stat-sub">Threshold: ≥ 120 (PASS), < 60 (ABSTAIN)</span>
+        </div>
+
+        <div class="stat-box">
+          <span class="stat-label">Valid Tissue Coverage</span>
+          <span id="statTissue" class="stat-value">--</span>
+          <span class="stat-sub">Threshold: ≥ 35%</span>
+        </div>
+      </div>
+
+      <div class="export-bar">
+        <button class="btn secondary-btn" onclick="exportArtifact('csv')">Download Summary CSV</button>
+        <button class="btn secondary-btn" onclick="exportArtifact('result')">Export JSON Contract</button>
+        <button class="btn secondary-btn" onclick="exportArtifact('overlay')">Download Overlay PNG</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
