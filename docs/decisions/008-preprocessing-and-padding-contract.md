@@ -17,9 +17,9 @@ AxoNet relies on pixelwise density regression where convolutions near borders lo
 3. **Reflection Padding & Valid Core**:
    - Mirror pad by 16 pixels on each boundary to expand tensor from $192 \times 192$ to $224 \times 224$.
    - Maintain an explicit boolean mask:
-     $$\text{valid\_mask}[16:208, 16:208] = \text{True}, \quad \text{else False}$$
+     $$M_{\text{valid}}[16:208, 16:208] = 1, \quad \text{else } 0$$
    - Mirrored pixels provide spatial receptive field context for convolutions, but are **strictly excluded** from loss computation and count integration:
-     $$\text{Count} = \frac{1}{m} \sum_{(x, y) \in \text{valid\_mask}} D(x, y)$$
+     $$\text{Count} = \frac{1}{m} \sum_{(x, y) \in M_{\text{valid}}} D(x, y)$$
 
 ## Consequences
 - Eliminates edge discontinuity artifacts.
