@@ -1,0 +1,9 @@
+{
+  "species": "rat",
+  "strain": "Brown Norway",
+  "stain": "PPD",
+  "microscope": "100x_oil_brightfield",
+  "pixel_size_um": 0.0625,
+  "acquisition_id": "acq_2026_01",
+  "notes": "Semi-thin 1um retrobulbar cross-section"
+}
