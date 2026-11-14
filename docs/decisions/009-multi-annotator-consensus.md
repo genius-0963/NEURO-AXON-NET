@@ -10,8 +10,8 @@ Axon annotations exhibit inter-observer variability: different experts may place
 
 ## Decision
 1. **Indicator Map Averaging**:
-   When $K$ annotators mark patch $P$, the discrete point mass at $(x, y)$ is:
-   $$\text{point\_map}[\text{round}(y), \text{round}(x)] += \frac{1.0}{K}$$
+   When $K$ annotators mark patch $\Omega$, the discrete point mass at $(x, y)$ is:
+   $$P[\text{round}(y), \text{round}(x)] += \frac{1.0}{K}$$
    Applying Gaussian filter $G_{\sigma=8}$ to this normalized map guarantees that $K$ identical annotator marks do not inflate the total axon count.
 2. **Inter-Annotator Point Localization & Matching**:
    - For QA evaluation, points between annotator pairs are matched using bipartite minimum-cost matching within an expert tolerance $\delta_{\max} = 5.0$ pixels ($\approx 0.31\,\mu\text{m}$).
