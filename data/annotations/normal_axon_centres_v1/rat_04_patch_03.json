@@ -1,0 +1,241 @@
+{
+  "annotation_id": "anno_rat_04_patch_03",
+  "patch_id": "rat_04_patch_03",
+  "annotator_id": "A01_Expert",
+  "label_version": "normal_axon_centres_v1",
+  "coordinate_frame": "source_patch_pixels",
+  "points": [
+    {
+      "x": 34.964651940016495,
+      "y": 175.4120568241156,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 81.37781927510798,
+      "y": 168.62191818071565,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 170.97039537155203,
+      "y": 147.53614591170816,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 62.89016832113849,
+      "y": 78.47062209749784,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 62.82393018334946,
+      "y": 50.84986913751529,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 23.220289269243768,
+      "y": 21.601807476280765,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 127.6620238871952,
+      "y": 157.49129495835354,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 41.755733636549515,
+      "y": 160.27949786296202,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 45.59116440532856,
+      "y": 117.4229488579655,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 85.91580211580698,
+      "y": 63.972629219943805,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 19.847871470906018,
+      "y": 162.16369589830958,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 40.6867597973477,
+      "y": 43.204609362591526,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 127.04449013859025,
+      "y": 172.28077024667397,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 56.1404493842101,
+      "y": 150.27424750322317,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 53.38377327832174,
+      "y": 25.554211831553783,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 93.45665797289968,
+      "y": 128.78330497833144,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 151.94162418851212,
+      "y": 20.48372054612716,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 53.52051657650476,
+      "y": 170.57352181560393,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 103.05320399269854,
+      "y": 165.5044734745865,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 72.16437057070218,
+      "y": 129.2802580540249,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 166.6857692297078,
+      "y": 90.41367367190989,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 124.61472336299806,
+      "y": 34.93484996545394,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 90.11226237733226,
+      "y": 44.32357424819859,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 22.490900291707522,
+      "y": 143.86074634576843,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 42.2182341560302,
+      "y": 94.79309217813383,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 131.6271967648657,
+      "y": 129.64865131213156,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 95.52577765080851,
+      "y": 149.51425543918808,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 113.26546730572669,
+      "y": 55.05009157298267,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 148.88237738373672,
+      "y": 82.80670913698523,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 146.75582097013674,
+      "y": 172.49894202256067,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 51.24152208365478,
+      "y": 134.3116336799015,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 99.95024529777828,
+      "y": 95.53605176748515,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 41.06759663711232,
+      "y": 64.61974288171952,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 172.43332091122426,
+      "y": 16.708759647228305,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 81.48366938576306,
+      "y": 85.83331938519437,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 17.284562216076058,
+      "y": 64.3127390280542,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 157.6746688809226,
+      "y": 56.02668190711441,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 77.6016206672142,
+      "y": 29.434614631024978,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 144.668264541273,
+      "y": 115.55169769592925,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 175.6390086862789,
+      "y": 163.89829700220585,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 149.7902478992474,
+      "y": 130.85316056421343,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 28.426868041527417,
+      "y": 89.37151462640469,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 104.63350207892464,
+      "y": 116.90296633726567,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 142.90850701825673,
+      "y": 154.86637073055857,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 128.80362400789812,
+      "y": 16.931598833070197,
+      "class_name": "normal_appearing_axon"
+    },
+    {
+      "x": 130.45779429271343,
+      "y": 69.1354531327245,
+      "class_name": "normal_appearing_axon"
+    }
+  ],
+  "edge_rule": "full_or_more_than_half_inside_per_protocol",
+  "review_state": "adjudicated"
+}
