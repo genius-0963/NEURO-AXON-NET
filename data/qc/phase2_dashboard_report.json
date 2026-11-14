@@ -1,0 +1,130 @@
+{
+  "report_version": "2.0.0",
+  "gate_decision": "PASS",
+  "views": {
+    "image_quality": {
+      "status_breakdown": {
+        "PASS": 20,
+        "REVIEW": 0,
+        "ABSTAIN": 3
+      },
+      "flagged_patches_count": 3,
+      "flagged_samples": [
+        {
+          "patch_id": "defect_blurry",
+          "status": "ABSTAIN",
+          "flags": [
+            "SEVERE_DEFOCUS_BLUR"
+          ],
+          "metrics": {
+            "laplacian_focus": 1.53,
+            "mean_luminance": 143.88,
+            "contrast_std": 5.27,
+            "tissue_ratio": 1.0
+          }
+        },
+        {
+          "patch_id": "defect_blank",
+          "status": "ABSTAIN",
+          "flags": [
+            "BACKGROUND_SLIDE_VOID",
+            "WASHOUT_UNDERSTAIN"
+          ],
+          "metrics": {
+            "laplacian_focus": 316.89,
+            "mean_luminance": 234.51,
+            "contrast_std": 3.99,
+            "tissue_ratio": 0.005
+          }
+        },
+        {
+          "patch_id": "defect_dark",
+          "status": "ABSTAIN",
+          "flags": [
+            "BACKGROUND_SLIDE_VOID",
+            "SEVERE_OVERSTAIN"
+          ],
+          "metrics": {
+            "laplacian_focus": 534.17,
+            "mean_luminance": 12.69,
+            "contrast_std": 11.89,
+            "tissue_ratio": 0.052
+          }
+        }
+      ]
+    },
+    "biological_distribution": {
+      "total_patches": 23,
+      "animals_per_split": {
+        "train": [
+          "rat_01",
+          "rat_02",
+          "rat_03"
+        ],
+        "val": [
+          "rat_04"
+        ],
+        "test": [
+          "qc_control_specimen",
+          "rat_05"
+        ]
+      },
+      "zero_leakage_verified": true,
+      "species": [
+        "Ethier_Lab_GT"
+      ],
+      "conditions": [
+        "Normal Control"
+      ]
+    },
+    "label_distribution": {
+      "min_count": 0.0,
+      "max_count": 50.0,
+      "mean_count": 38.48,
+      "median_count": 40.0,
+      "zero_count_fraction": 0.0435,
+      "count_percentiles": {
+        "p10": 32.2,
+        "p25": 35.0,
+        "p50": 40.0,
+        "p75": 44.5,
+        "p90": 47.8
+      }
+    },
+    "acquisition_domain": {
+      "stains": [
+        "PPD"
+      ],
+      "microscopes": [
+        "100x_oil_brightfield"
+      ],
+      "pixel_spacing_um": [
+        0.0625
+      ],
+      "metadata_completeness": 1.0
+    },
+    "target_integrity": {
+      "target_shape": [
+        192,
+        192
+      ],
+      "numeric_invariants_pass": true,
+      "details": {
+        "single_point_non_negative": true,
+        "single_point_integral": 1.0,
+        "invariant_1_pass": true,
+        "invariant_2_k_annotator_invariance": true,
+        "invariant_3_superposition": true,
+        "border_corner_integral": 0.2766,
+        "invariant_4_border_documented": true,
+        "dtype": "float32",
+        "shape": [
+          192,
+          192
+        ],
+        "finite_check": true,
+        "invariant_5_pass": true
+      }
+    }
+  }
+}
