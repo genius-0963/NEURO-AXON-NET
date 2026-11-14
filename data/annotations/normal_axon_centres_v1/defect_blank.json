@@ -1,0 +1,10 @@
+{
+  "annotation_id": "anno_defect_blank",
+  "patch_id": "defect_blank",
+  "annotator_id": "A01_Expert",
+  "label_version": "normal_axon_centres_v1",
+  "coordinate_frame": "source_patch_pixels",
+  "points": [],
+  "edge_rule": "full_or_more_than_half_inside_per_protocol",
+  "review_state": "adjudicated"
+}
