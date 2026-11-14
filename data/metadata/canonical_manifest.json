@@ -1,0 +1,38 @@
+{
+  "pipeline_version": "2.0.0",
+  "total_records": 23,
+  "split_hashes": {
+    "train": "ab637981335907bf4ff74d57935a5448e38de179a4b9659c9b36fe66db8a48da",
+    "val": "2b128287cf59c42a8a30d384d9fcb97b2a4c0d7bb513f1b064a30b482cdd960d",
+    "test": "d36aa4e14521f4dbe1f497fdf73319361c3c73b0013ca15bb466171d5fbbd5e5"
+  },
+  "leakage_audit": {
+    "counts": {
+      "train": 12,
+      "val": 4,
+      "test": 7
+    },
+    "overlaps": {
+      "train_vs_val": {},
+      "train_vs_test": {},
+      "val_vs_test": {}
+    },
+    "passed": true
+  },
+  "numeric_invariants": {
+    "single_point_non_negative": true,
+    "single_point_integral": 1.0,
+    "invariant_1_pass": true,
+    "invariant_2_k_annotator_invariance": true,
+    "invariant_3_superposition": true,
+    "border_corner_integral": 0.2766,
+    "invariant_4_border_documented": true,
+    "dtype": "float32",
+    "shape": [
+      192,
+      192
+    ],
+    "finite_check": true,
+    "invariant_5_pass": true
+  }
+}
