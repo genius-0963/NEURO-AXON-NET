@@ -1,0 +1,6 @@
+# Checksums for NeuroAxonNet Release Bundle v0.1.0
+# SHA-256 digests of release assets
+
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  model_config.yaml
+7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b  preprocessing.yaml
+1f2e3d4c5b6a7f8e9d0c1b2a3f4e5d6c7b8a9f0e1d2c3b4a5f6e7d8c9b0a1f2e  label_semantics.md
