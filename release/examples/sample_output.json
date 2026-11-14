@@ -1,0 +1,45 @@
+{
+  "job_id": "job_sample_01",
+  "status": "completed",
+  "model": {
+    "name": "NeuroAxonNet",
+    "version": "0.1.0",
+    "sha256": "8f9a2e3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f"
+  },
+  "input": {
+    "sha256": "deb57ad0e75d84185b782aed75dd4ff28427eec9fec796618b580ccf3daf5f45",
+    "width": 192,
+    "height": 192,
+    "pixel_size_um": 0.0625,
+    "species": "rat",
+    "stain": "PPD"
+  },
+  "count": {
+    "raw_estimate": 42.15,
+    "calibrated_estimate": 41.8,
+    "unit": "normal_appearing_axons",
+    "density_scale": 1000
+  },
+  "qc": {
+    "status": "pass",
+    "flags": [],
+    "metrics": {
+      "laplacian_focus": 340.5,
+      "mean_luminance": 128.4,
+      "contrast_std": 38.2,
+      "tissue_ratio": 0.94
+    }
+  },
+  "artifacts": {
+    "density_map": "/api/v1/jobs/job_sample_01/artifacts/density",
+    "overlay": "/api/v1/jobs/job_sample_01/artifacts/overlay",
+    "summary_csv": "/api/v1/jobs/job_sample_01/artifacts/csv"
+  },
+  "provenance": {
+    "preprocessing_version": "v1_pad224_norm2sigma",
+    "config_hash": "cfg_sha256_axonet_v0",
+    "created_at": "2026-11-14T12:00:00Z",
+    "runtime": "python3_numpy_engine"
+  },
+  "disclaimer": "RESEARCH PROTOTYPE ONLY. NOT A CLINICAL DIAGNOSTIC DEVICE OR A SUBSTITUTE FOR EXPERT PATHOLOGY REVIEW."
+}
