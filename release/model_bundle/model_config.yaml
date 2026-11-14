@@ -1,0 +1,12 @@
+name: "NeuroAxonNet"
+version: "0.1.0"
+architecture: "reduced_unet_baseline"
+in_channels: 1
+base_channels: 32
+channel_progression: [32, 64, 128, 256]
+bottleneck_channels: 512
+density_head: "1x1_conv_relu"
+density_scale_m: 1000.0
+input_tensor_shape: [1, 224, 224]
+valid_core_shape: [1, 192, 192]
+padding: 16
