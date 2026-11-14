@@ -1,0 +1,13 @@
+version: "v1_pad224_norm2sigma"
+raw_patch_dim: [187, 187]
+resized_core_dim: [192, 192]
+interpolation: "bilinear"
+normalization: "two_sigma_clipped"
+normalization_formula: "clip((I - mu) / max(2*sigma, 1e-6), -1.0, 1.0)"
+padding_mode: "reflect"
+pad_width: 16
+padded_dim: [224, 224]
+valid_core_slice: [[16, 208], [16, 208]]
+target_sigma: 8.0
+target_kernel_size: 33
+target_scale: 1000.0
