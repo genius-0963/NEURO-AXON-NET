@@ -1,0 +1,251 @@
+# ==============================================================================
+# NeuroAxonNet - Cloud Native Project Descriptor & System Specification
+# ==============================================================================
+# Specification: Cloud Native Buildpacks (CNB) Project Descriptor Specification (v0.2)
+# Reference: https://buildpacks.io/docs/for-app-developers/how-to/build-inputs/project-descriptor/
+# ==============================================================================
+
+[_]
+schema-version = "0.2"
+id = "io.neuroaxonnet.platform"
+name = "NeuroAxonNet"
+version = "0.1.0"
+homepage = "https://github.com/genius-0963/NEURO-AXON-NET"
+
+# ------------------------------------------------------------------------------
+# 1. Project Identification & Research Metadata
+# ------------------------------------------------------------------------------
+[project]
+id = "io.neuroaxonnet.platform"
+name = "NeuroAxonNet"
+version = "0.1.0"
+description = "Research-grade retinal ganglion cell axon count-density estimation, automated quality control & whole-nerve tiling platform for optic nerve light microscopy"
+homepage = "https://github.com/genius-0963/NEURO-AXON-NET"
+documentation-url = "https://github.com/genius-0963/NEURO-AXON-NET/blob/main/README.md"
+source-url = "https://github.com/genius-0963/NEURO-AXON-NET.git"
+
+authors = [
+    { name = "NeuroAxonNet AI Engineering Team", email = "geniusthegreat0963@gmail.com" }
+]
+
+licenses = [
+    { type = "MIT (Research Prototype)", uri = "https://github.com/genius-0963/NEURO-AXON-NET/blob/main/LICENSE" }
+]
+
+keywords = [
+    "neuroscience",
+    "retinal-ganglion-cell",
+    "optic-nerve",
+    "axon-density-estimation",
+    "deep-learning",
+    "u-net",
+    "microscopy",
+    "automated-quality-control",
+    "research-use-only",
+    "cloud-native-buildpack"
+]
+
+# ------------------------------------------------------------------------------
+# 2. Buildpack Configuration & Source Filtering
+# ------------------------------------------------------------------------------
+[build]
+include = [
+    "src/",
+    "configs/",
+    "data/fixtures/",
+    "data/splits/",
+    "docs/",
+    "scripts/",
+    "release/",
+    "pyproject.toml",
+    "project.toml",
+    "Makefile",
+    "README.md",
+    "LICENSE"
+]
+
+exclude = [
+    ".git/",
+    ".github/",
+    ".venv/",
+    ".pytest_cache/",
+    ".saropa/",
+    "artifacts/",
+    "build/",
+    "dist/",
+    "*.egg-info/",
+    "**/__pycache__/",
+    "**/*.pyc",
+    "**/*.pyo",
+    "**/*.pyd",
+    ".DS_Store"
+]
+
+[[build.buildpacks]]
+uri = "paketo-buildpacks/python"
+version = "latest"
+
+[[build.env]]
+name = "BP_CPYTHON_VERSION"
+value = "3.12.*"
+
+[[build.env]]
+name = "BP_PIP_INSTALL_ARGS"
+value = "--no-cache-dir"
+
+[[build.env]]
+name = "PORT"
+value = "8000"
+
+[[build.env]]
+name = "HOST"
+value = "0.0.0.0"
+
+[[build.env]]
+name = "PYTHONUNBUFFERED"
+value = "1"
+
+[[build.env]]
+name = "PYTHONDONTWRITEBYTECODE"
+value = "1"
+
+[[build.env]]
+name = "NEUROAXONNET_ENV"
+value = "production"
+
+# ------------------------------------------------------------------------------
+# 3. Process Execution Profiles (OCI Container Entrypoints)
+# ------------------------------------------------------------------------------
+[[processes]]
+type = "web"
+command = "uvicorn"
+args = ["neuroaxonnet.api.server:app", "--host", "0.0.0.0", "--port", "8000"]
+default = true
+direct = false
+
+[[processes]]
+type = "cli"
+command = "neuroaxonnet"
+args = ["--help"]
+direct = false
+
+[[processes]]
+type = "agent-team"
+command = "python"
+args = ["scripts/run_agent_team.py"]
+direct = false
+
+[[processes]]
+type = "qc-dashboard"
+command = "python"
+args = ["scripts/generate_qc_dashboard.py"]
+direct = false
+
+[[processes]]
+type = "fixtures"
+command = "python"
+args = ["-m", "neuroaxonnet.data.fixtures"]
+direct = false
+
+[[processes]]
+type = "test"
+command = "pytest"
+args = ["tests/", "-v"]
+direct = false
+
+# ------------------------------------------------------------------------------
+# 4. Detailed Scientific & Engineering System Specifications
+# ------------------------------------------------------------------------------
+[metadata.neuroaxonnet]
+system_name = "NeuroAxonNet Platform"
+phase_version = "Phase 05 - Production Ready"
+status = "RELEASE_V0_1_0_SIGNED_OFF"
+
+[metadata.neuroaxonnet.regulatory]
+classification = "Research Use Only (RUO)"
+intended_audience = "Preclinical Neuroscience & Vision Research"
+target_tissue = "Retrobulbar Optic Nerve Cross-Sections (Rodent / Rat / Mouse)"
+stain_type = "p-Phenylenediamine (PPD) Light Microscopy"
+disclaimer = "NeuroAxonNet is not a clinical diagnostic device, clinical decision-support system, or medical product. Never make treatment or clinical determinations based on outputs from this software."
+
+[metadata.neuroaxonnet.mathematics]
+density_multiplier = 1000.0
+gaussian_sigma_px = 8.0
+gaussian_truncation_sigma = 2.0
+gaussian_kernel_size = 33
+count_integral_formula = "Axon_Count = (1 / m) * double_integral(D(x, y) dx dy)"
+raw_patch_dim = [187, 187]
+bilinear_resize_dim = [192, 192]
+reflection_pad_width = 16
+padded_input_dim = [224, 224]
+valid_core_slice = [16, 208, 16, 208]
+tiling_window_dim = [192, 192]
+tiling_stride_dim = [96, 96]
+tiling_window_type = "2D separable Hann tapering window"
+
+[metadata.neuroaxonnet.quality_control]
+laplacian_blur_abstain_threshold = 60.0
+laplacian_blur_review_threshold = 120.0
+min_tissue_foreground_ratio = 0.35
+min_mean_luminance = 40.0
+max_mean_luminance = 220.0
+status_codes = ["PASS", "REVIEW", "ABSTAIN"]
+
+[metadata.neuroaxonnet.data_contracts]
+manifest_columns = 22
+manifest_version = "v1"
+split_strategy = "Biological Specimen Isolation (animal_id)"
+leakage_policy = "ZERO_OVERLAP_ACROSS_SPLITS"
+matching_algorithm = "Bipartite Hungarian Assignment"
+localization_tolerance_px = 5.0
+localization_tolerance_um = 0.3125
+coordinate_boundary_convention = "Half-Open Intervals [0, W) x [0, H)"
+hashing_algorithm = "SHA-256 pre-hashes before image decoding"
+
+[metadata.neuroaxonnet.architecture_models]
+primary_baseline = "axon_density_unet_v0"
+base_channels = 32
+channel_progression = [32, 64, 128, 256]
+bottleneck_channels = 512
+terminal_activation = "ReLU (strictly non-negative density: Y >= 0.0)"
+loss_function = "Masked Mean Squared Error over valid core mask"
+runtime_engines = ["PyTorch Core", "NumPy Reference Engine"]
+ablation_variants = [
+    { id = "v1_residual", name = "Residual U-Net", status = "Quarantined behind ablation flag" },
+    { id = "v2_attention", name = "Attention U-Net", status = "Quarantined behind ablation flag" }
+]
+
+[metadata.neuroaxonnet.api]
+framework = "FastAPI"
+asgi_server = "uvicorn"
+default_port = 8000
+default_host = "0.0.0.0"
+base_route = "/api/v1/jobs"
+health_check_route = "/health"
+ui_dashboard_route = "/"
+
+[metadata.neuroaxonnet.multi_agent_system]
+orchestrator = "MultiAgentTeamOrchestrator"
+lifecycle_phases = 5
+agent_roster = [
+    { role = "Chief Architect", file = "src/neuroaxonnet/agents/architect_agent.py", responsibility = "System boundaries, ADRs, exit gates" },
+    { role = "Scientific Research Lead", file = "src/neuroaxonnet/agents/research_agent.py", responsibility = "Prior-art matrix, non-clinical governance" },
+    { role = "Data Steward", file = "src/neuroaxonnet/agents/data_steward_agent.py", responsibility = "SHA-256 pre-hashes, 22-column schema, biological splits" },
+    { role = "Domain Neurohistologist", file = "src/neuroaxonnet/agents/neurohistologist_agent.py", responsibility = "Cytological rubric, bipartite Hungarian consensus" },
+    { role = "Deep Learning Lead", file = "src/neuroaxonnet/agents/ml_engineer_agent.py", responsibility = "Reduced U-Net, masked loss, one-batch fit engine" },
+    { role = "Statistician & QA Gatekeeper", file = "src/neuroaxonnet/agents/quality_gate_agent.py", responsibility = "Lin's CCC, animal bootstrap 95% CI, 33-test suite" }
+]
+
+[metadata.neuroaxonnet.adrs]
+"NAX-ADR-001" = "Framework Selection & Parity Adapter (PyTorch + NumPy reference)"
+"NAX-ADR-002" = "Density Regression over Segmentation (Count-density with m=1000)"
+"NAX-ADR-003" = "Biological Specimen Group Splitting (Partition strictly by animal_id)"
+"NAX-ADR-004" = "Decoupling Scientific Core from Transport (Shared inference service)"
+"NAX-ADR-005" = "Quality Control & Calibrated Abstention (Tri-state focus & luminance audit)"
+"NAX-ADR-006" = "Research-Use-Only Governance (Mandatory regulatory disclaimer policy)"
+"NAX-ADR-007" = "Canonical 6-Entity Relational Schema (Specimen -> Transform)"
+"NAX-ADR-008" = "Preprocessing & Valid Core Padding (187->192, 2-sigma norm, 16px reflection)"
+"NAX-ADR-009" = "Multi-Annotator Consensus & Matching (Hungarian matching delta <= 5.0px)"
+"NAX-ADR-010" = "Reduced U-Net Baseline & Variant Flags (V0 with ReLU head, V1/V2 flagged)"
+"NAX-ADR-011" = "Statistical Agreement & Group Bootstrap (Lin's CCC, Bland-Altman, bootstrap CIs)"
+"NAX-ADR-012" = "Unified Runtime & Server Job Lifecycle (Job IDs, immutable results)"

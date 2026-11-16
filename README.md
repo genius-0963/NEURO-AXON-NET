@@ -176,6 +176,7 @@ Where $s_x^2, s_y^2$ are sample variances, $\bar{x}, \bar{y}$ are sample means, 
 neuroaxonnet/
 ├── Makefile                          # Unified build and automation harness
 ├── pyproject.toml                    # Package metadata, dependencies, entrypoints
+├── project.toml                      # Cloud Native Buildpack (CNB) descriptor & platform spec
 ├── configs/                          # Immutable YAML configuration files
 │   ├── model/axon_density_unet.yaml  # Model hyperparameters & widths
 │   └── train/axonnet_baseline.yaml   # Optimizer, loss, checkpoint parameters
